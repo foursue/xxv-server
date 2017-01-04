@@ -1,3 +1,5 @@
+nodes/*
+!sample.yml
 secure/*
 !.gitkeep
 vendor/

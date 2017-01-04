@@ -1,0 +1,13 @@
+roles:
+  - wordpress
+multi_wordpress:
+  - server_name: site1.example.com
+    root: /usr/share/nginx/site1
+    db_name: wordpress_site1_db
+    db_user: wordpress_site1_user
+    db_password: password1
+  - server_name: site2.example.com
+    root: /usr/share/nginx/site2
+    db_name: wordpress_site2_db
+    db_user: wordpress_site2_user
+    db_password: password2

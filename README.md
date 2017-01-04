@@ -10,7 +10,7 @@ $ cd xxv-server
 
 ### レシピの適用
 
-IPアドレス、PEMファイル、nodeファイルはそれぞれ作ってください。
+IPアドレス、PEMファイル、nodeファイルをそれぞれ書いてください。
 
 ```
 docker run --rm -v $HOME/projects/xxv-server:/usr/src/app -w /usr/src/app ruby:2 sh -c 'bundle install --path vendor/bundle && bundle exec itamae ssh entry.rb --host {{アドレス}} -u root -i secure/{{PEMファイル}} -y nodes/{{nodeファイル}} -n'

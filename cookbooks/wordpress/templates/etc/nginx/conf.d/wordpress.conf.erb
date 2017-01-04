@@ -1,0 +1,30 @@
+<% @apps.each do |app| %>
+server {
+  listen 80;
+  server_name <%= app["server_name"] %>;
+  charset utf-8;
+  # wordpress パーマネントリンク設定
+  try_files $uri $uri/ /index.php?q=$uri&$args;
+  # wp-config.phpへのアクセス拒否設定
+  location ~* /wp-config.php {
+    deny all;
+  }
+  <% if app["proxy_pass"] then %>
+  proxy_set_header Host $http_host;
+  location / {
+    proxy_pass <%= app["proxy_pass"] %>;
+  }
+  <% elsif app["root"] then %>
+  root <%= app["root"] %>;
+  index index.php;
+  # php-fpm用設定
+  location ~ \.php$ {
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param PATH_INFO $fastcgi_script_name;
+    include fastcgi_params;
+  }
+  <% end %>
+}
+<% end %>
