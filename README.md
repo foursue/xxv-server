@@ -1,5 +1,8 @@
 # itamaeのサンプル用のプロジェクト
 
+Nginx+PHP70(fpm)+MySQL56+Wordpressするitamae
+http://qiita.com/foursue/items/17c1f5607c921aee37a0
+
 ## usage
 
 ```
